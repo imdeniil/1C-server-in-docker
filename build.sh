@@ -23,8 +23,6 @@ echo
 echo ----------------------------------------
 echo
 echo -n "Проверь сводку по контейнеру, верная (y/n)? "
-echo
-echo
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -77,7 +75,7 @@ cat ./origin/docker-entrypoint.sh >> ./docker-entrypoint.sh
 chmod 777 docker-entrypoint.sh
 
 #Ожидаю сборку  
-echo "Стартую build-docker.sh, это долго.Можешь пока чаю налить, и смотреть логи >> ./$SRV_N.txt"
+echo "Стартую build-docker.sh, это долго.\nМожешь пока чаю налить, и смотреть логи >> ./logs.txt"
 ./build-docker.sh >> $SRV_N.txt &
 pid=$!
 wait $pid
